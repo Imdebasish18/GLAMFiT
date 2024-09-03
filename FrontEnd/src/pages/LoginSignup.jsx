@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { ShopContex } from "../contex/ShopContex";
 
 export default function LoginSignup() {
   const [state, setState] = useState("Sign up");
+  const { serverLink } = useContext(ShopContex);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -14,7 +17,7 @@ export default function LoginSignup() {
   const login = async () => {
     console.log("Login function executed..", formData);
     let responseData;
-    await fetch("http://localhost:8001/Login", {
+    await fetch(`${serverLink}/Login`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -34,7 +37,7 @@ export default function LoginSignup() {
   const signup = async () => {
     console.log("signup function executed", formData);
     let responseData;
-    await fetch("http://localhost:8001/Signup", {
+    await fetch(`${serverLink}/Signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",

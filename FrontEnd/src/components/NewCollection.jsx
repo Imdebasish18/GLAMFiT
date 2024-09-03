@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import Item from "./Item";
+import { useContext } from "react";
+import { ShopContex } from "../contex/ShopContex";
 export default function NewCollection() {
   const [new_collections, setNew_collections] = useState([]);
+  const { serverLink } = useContext(ShopContex);
 
   const fetch_new_collections = async () => {
-    await fetch("http://localhost:8001/newCollection")
+    await fetch(`${serverLink}/newCollection`)
       .then((res) => res.json())
       .then((data) => setNew_collections(data));
   };

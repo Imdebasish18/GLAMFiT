@@ -1,5 +1,5 @@
 import hand_icon from "./assets/hand_icon.png";
-import hero from "./assets/hero.png";
+import hero from "./assets/Hero.png";
 
 export default function Hero() {
   return (

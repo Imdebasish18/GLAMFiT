@@ -5,7 +5,7 @@ export const ShopContex = createContext(null);
 
 const getDefaultCart = () => {
   let cart = {};
-  for (let i = 1; i <= 300; i++) {
+  for (let i = 0; i <= 300; i++) {
     cart[i] = 0;
   }
   return cart;
@@ -14,14 +14,14 @@ const getDefaultCart = () => {
 const ShopContexProvider = (Props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [all_product, setAllProduct] = useState([]);
-
+  const serverLink = "http://localhost:8001";
   useEffect(() => {
-    fetch("http://localhost:8001/allProducts")
+    fetch(`${serverLink}/allProducts`)
       .then((res) => res.json())
       .then((data) => setAllProduct(data));
 
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:8001/getCart", {
+      fetch(`${serverLink}/getCart`, {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -61,7 +61,7 @@ const ShopContexProvider = (Props) => {
   const addToCart = (item_id) => {
     setCartItems((prev) => ({ ...prev, [item_id]: prev[item_id] + 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:8001/addToCart", {
+      fetch(`${serverLink}/addToCart`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -78,7 +78,7 @@ const ShopContexProvider = (Props) => {
   const removeToCart = (item_id) => {
     setCartItems((prev) => ({ ...prev, [item_id]: prev[item_id] - 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:8001/removeFromCart", {
+      fetch(`${serverLink}/removeFromCart`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -98,6 +98,7 @@ const ShopContexProvider = (Props) => {
     removeToCart,
     getTotalAmount,
     getCartIconValue,
+    serverLink,
   };
 
   return (

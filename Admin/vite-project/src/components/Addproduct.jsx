@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import upload_area from "../assets/upload_area.svg";
+import { ShopContex } from "../../../../FrontEnd/src/contex/ShopContex";
 
 export default function Addproduct() {
   const [image, setImage] = useState(false);
@@ -10,6 +11,7 @@ export default function Addproduct() {
     old_price: "",
     new_price: "",
   });
+  const { serverLink } = useContext(ShopContex);
 
   const onChangeHandler = (e) => {
     setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
@@ -26,7 +28,7 @@ export default function Addproduct() {
 
     // Upload image
     try {
-      const uploadResponse = await fetch("http://localhost:8001/upload", {
+      const uploadResponse = await fetch(`${serverLink}/upload`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -46,17 +48,14 @@ export default function Addproduct() {
         setImage(false);
 
         // Add product
-        const productResponse = await fetch(
-          "http://localhost:8001/addProduct",
-          {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedProductDetails),
-          }
-        );
+        const productResponse = await fetch(`${serverLink}/addProduct`, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedProductDetails),
+        });
 
         const productData = await productResponse.json();
         if (productData.success) {

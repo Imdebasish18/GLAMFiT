@@ -1,4 +1,4 @@
-const port = 8001;
+const port = process.env.PORT || 8001;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -286,7 +286,18 @@ app.get("/newCollection", async (req, res) => {
   console.log("new collection fetched!");
   res.send(newCollection);
 });
-
+//---------------------------------------
+app.post("/relatedProduct", async (req, res) => {
+  let index = req.body.id;
+  let category = req.body.category;
+  let products = await Product.find({ category: category });
+  let length = products.length;
+  let start = (length + index) % (length - 5);
+  let newCollection = products.slice(start, start + 4);
+  console.log("new collection fetched!");
+  res.send(newCollection);
+});
+//-------------------------------------------
 app.get("/popularInWomen", async (req, res) => {
   let womenProducts = await Product.find({ category: "women" });
   let popularInWomen = womenProducts.slice(0, 4);

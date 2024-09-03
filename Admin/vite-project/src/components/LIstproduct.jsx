@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import cross_icon from "../assets/cross_icon.png";
+import { ShopContex } from "../../../../FrontEnd/src/contex/ShopContex";
 
 export default function Listproduct() {
   const [allproducts, setAllProducts] = useState([]);
+  const { serverLink } = useContext(ShopContex);
 
   const fetchInfo = async () => {
-    await fetch("http://localhost:8001/allProducts")
+    await fetch(`${serverLink}/allProducts`)
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
@@ -17,7 +19,7 @@ export default function Listproduct() {
 
   const removeProduct = async (id) => {
     console.log(id);
-    await fetch("http://localhost:8001/removeProduct", {
+    await fetch(`${serverLink}/removeProduct`, {
       method: "POST",
       headers: {
         Accept: "application/json",

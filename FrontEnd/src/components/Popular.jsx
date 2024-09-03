@@ -1,13 +1,16 @@
 import { useState } from "react";
 import Item from "./Item";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { ShopContex } from "../contex/ShopContex";
 export default function Popular() {
   const [popularInWomen, setPopularInWomen] = useState([]);
+  const { serverLink } = useContext(ShopContex);
   useEffect(() => {
-    fetch("http://localhost:8001/popularInWomen")
+    fetch(`${serverLink}/popularInWomen`)
       .then((res) => res.json())
       .then((data) => setPopularInWomen(data));
-  }, []);
+  }, [serverLink]);
 
   return (
     <>
