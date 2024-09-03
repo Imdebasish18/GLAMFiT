@@ -5,7 +5,7 @@ export default function Listproduct() {
   const [allproducts, setAllProducts] = useState([]);
 
   const fetchInfo = async () => {
-    await fetch("https://glamfit.onrender.com")
+    await fetch("https://glamfit.onrender.com/allProducts")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
@@ -17,7 +17,7 @@ export default function Listproduct() {
 
   const removeProduct = async (id) => {
     console.log(id);
-    await fetch("https://glamfit.onrender.com", {
+    await fetch("https://glamfit.onrender.com/removeProduct", {
       method: "POST",
       headers: {
         Accept: "application/json",
