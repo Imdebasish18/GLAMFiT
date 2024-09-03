@@ -16,12 +16,12 @@ const ShopContexProvider = (Props) => {
   const [all_product, setAllProduct] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8001/allProducts")
+    fetch("https://glamfit.onrender.com/allProducts")
       .then((res) => res.json())
       .then((data) => setAllProduct(data));
 
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:8001/getCart", {
+      fetch("https://glamfit.onrender.com/getCart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -61,7 +61,7 @@ const ShopContexProvider = (Props) => {
   const addToCart = (item_id) => {
     setCartItems((prev) => ({ ...prev, [item_id]: prev[item_id] + 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:8001/addToCart", {
+      fetch("https://glamfit.onrender.com/addToCart", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -78,7 +78,7 @@ const ShopContexProvider = (Props) => {
   const removeToCart = (item_id) => {
     setCartItems((prev) => ({ ...prev, [item_id]: prev[item_id] - 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:8001/removeFromCart", {
+      fetch("https://glamfit.onrender.com/removeFromCart", {
         method: "POST",
         headers: {
           Accept: "application/json",
