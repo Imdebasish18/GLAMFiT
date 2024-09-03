@@ -26,7 +26,7 @@ export default function Addproduct() {
 
     // Upload image
     try {
-      const uploadResponse = await fetch("https://glamfit.onrender.com", {
+      const uploadResponse = await fetch("https://glamfit.onrender.com/upload", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -47,7 +47,7 @@ export default function Addproduct() {
 
         // Add product
         const productResponse = await fetch(
-          "https://glamfit.onrender.com",
+          "https://glamfit.onrender.com/addProduct",
           {
             method: "POST",
             headers: {
