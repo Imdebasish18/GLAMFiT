@@ -4,7 +4,7 @@ export default function NewCollection() {
   const [new_collections, setNew_collections] = useState([]);
 
   const fetch_new_collections = async () => {
-    await fetch("http://localhost:8001/newCollection")
+    await fetch("https://glamfit.onrender.com/newCollection")
       .then((res) => res.json())
       .then((data) => setNew_collections(data));
   };
