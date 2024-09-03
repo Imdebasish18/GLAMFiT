@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export default function Popular() {
   const [popularInWomen, setPopularInWomen] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8001/popularInWomen")
+    fetch("https://glamfit.onrender.com/popularInWomen")
       .then((res) => res.json())
       .then((data) => setPopularInWomen(data));
   }, []);
