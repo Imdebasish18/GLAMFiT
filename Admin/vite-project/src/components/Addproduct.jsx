@@ -28,7 +28,11 @@ export default function Addproduct() {
 
     // Upload image
     try {
+<<<<<<< HEAD
       const uploadResponse = await fetch(`${serverLink}/upload`, {
+=======
+      const uploadResponse = await fetch("https://glamfit.onrender.com/upload", {
+>>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -48,6 +52,7 @@ export default function Addproduct() {
         setImage(false);
 
         // Add product
+<<<<<<< HEAD
         const productResponse = await fetch(`${serverLink}/addProduct`, {
           method: "POST",
           headers: {
@@ -56,6 +61,19 @@ export default function Addproduct() {
           },
           body: JSON.stringify(updatedProductDetails),
         });
+=======
+        const productResponse = await fetch(
+          "https://glamfit.onrender.com/addProduct",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedProductDetails),
+          }
+        );
+>>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
 
         const productData = await productResponse.json();
         if (productData.success) {

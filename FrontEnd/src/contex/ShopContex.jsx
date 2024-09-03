@@ -5,7 +5,11 @@ export const ShopContex = createContext(null);
 
 const getDefaultCart = () => {
   let cart = {};
+<<<<<<< HEAD
   for (let i = 0; i <= 300; i++) {
+=======
+  for (let i = 0; i <300; i++) {
+>>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
     cart[i] = 0;
   }
   return cart;
@@ -16,12 +20,20 @@ const ShopContexProvider = (Props) => {
   const [all_product, setAllProduct] = useState([]);
   const serverLink = "http://localhost:8001";
   useEffect(() => {
+<<<<<<< HEAD
     fetch(`${serverLink}/allProducts`)
+=======
+    fetch("https://glamfit.onrender.com/allProducts")
+>>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
       .then((res) => res.json())
       .then((data) => setAllProduct(data));
 
     if (localStorage.getItem("auth-token")) {
+<<<<<<< HEAD
       fetch(`${serverLink}/getCart`, {
+=======
+      fetch("https://glamfit.onrender.com/getCart", {
+>>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -61,7 +73,11 @@ const ShopContexProvider = (Props) => {
   const addToCart = (item_id) => {
     setCartItems((prev) => ({ ...prev, [item_id]: prev[item_id] + 1 }));
     if (localStorage.getItem("auth-token")) {
+<<<<<<< HEAD
       fetch(`${serverLink}/addToCart`, {
+=======
+      fetch("https://glamfit.onrender.com/addToCart", {
+>>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -78,7 +94,11 @@ const ShopContexProvider = (Props) => {
   const removeToCart = (item_id) => {
     setCartItems((prev) => ({ ...prev, [item_id]: prev[item_id] - 1 }));
     if (localStorage.getItem("auth-token")) {
+<<<<<<< HEAD
       fetch(`${serverLink}/removeFromCart`, {
+=======
+      fetch("https://glamfit.onrender.com/removeFromCart", {
+>>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
         method: "POST",
         headers: {
           Accept: "application/json",

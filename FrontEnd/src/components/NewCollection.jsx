@@ -7,7 +7,11 @@ export default function NewCollection() {
   const { serverLink } = useContext(ShopContex);
 
   const fetch_new_collections = async () => {
+<<<<<<< HEAD
     await fetch(`${serverLink}/newCollection`)
+=======
+    await fetch("https://glamfit.onrender.com/newCollection")
+>>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
       .then((res) => res.json())
       .then((data) => setNew_collections(data));
   };
