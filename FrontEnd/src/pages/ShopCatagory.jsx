@@ -19,7 +19,7 @@ export default function ShopCatagory({ banner, category }) {
             Products
           </p>
           <div className="px-2 md:px-3 md:py-1 py-0 rounded-3xl border border-[#888] ">
-            Sort by{" "}
+            Sort by
             <img
               src={dropDown_icon}
               alt=""

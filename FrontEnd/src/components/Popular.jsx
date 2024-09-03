@@ -7,11 +7,7 @@ export default function Popular() {
   const [popularInWomen, setPopularInWomen] = useState([]);
   const { serverLink } = useContext(ShopContex);
   useEffect(() => {
-<<<<<<< HEAD
     fetch(`${serverLink}/popularInWomen`)
-=======
-    fetch("https://glamfit.onrender.com/popularInWomen")
->>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
       .then((res) => res.json())
       .then((data) => setPopularInWomen(data));
   }, [serverLink]);

@@ -26,7 +26,7 @@ export default function RelatedProduct(Props) {
 
   useEffect(() => {
     fetch_relatedProduct(id, category);
-  }, []);
+  }, [id, category]);
 
   //--------------------------------------
   return (
