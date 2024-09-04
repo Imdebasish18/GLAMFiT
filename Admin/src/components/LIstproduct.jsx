@@ -1,17 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import cross_icon from "../assets/cross_icon.png";
-import { ShopContex } from "../../../../FrontEnd/src/contex/ShopContex";
-
+import ShopContex from "../../../FrontEnd/src/contex/ShopContex";
 export default function Listproduct() {
   const [allproducts, setAllProducts] = useState([]);
+  // const { serverLink } = useContext(ShopContex);
   const { serverLink } = useContext(ShopContex);
 
   const fetchInfo = async () => {
-<<<<<<< HEAD
     await fetch(`${serverLink}/allProducts`)
-=======
-    await fetch("https://glamfit.onrender.com/allProducts")
->>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
@@ -23,11 +19,7 @@ export default function Listproduct() {
 
   const removeProduct = async (id) => {
     console.log(id);
-<<<<<<< HEAD
     await fetch(`${serverLink}/removeProduct`, {
-=======
-    await fetch("https://glamfit.onrender.com/removeProduct", {
->>>>>>> ebbe83423921e36aa6b3cf776b7e139866128de6
       method: "POST",
       headers: {
         Accept: "application/json",
