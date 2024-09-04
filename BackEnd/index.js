@@ -62,7 +62,7 @@ const upload = multer({ storage: storage });
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `http://localhost:${port}/images/${req.file.filename}`,
+    image_url: `https://glamfit.onrender.com/images/${req.file.filename}`,
   });
 });
 
@@ -146,14 +146,6 @@ const fetchUser = async (req, res, next) => {
   }
 };
 
-//Creating endpoint for adding products in cartdata:
-// app.post("/addToCart", fetchUser, async (req, res) => {
-//   console.log(req.body);
-//   let userData = await User.findOne({ _id: req.user.id });
-//   userData.cart[req.body.item_id] += 1;
-//   await User.findOneAndUpdate({ _id: req.user.id }, { cart: userData.cart });
-//   res.send("added");
-// });
 app.post("/addToCart", fetchUser, async (req, res) => {
   console.log("added!", req.body.itemId);
   try {
