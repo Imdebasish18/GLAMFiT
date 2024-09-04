@@ -14,7 +14,7 @@ const getDefaultCart = () => {
 const ShopContexProvider = (Props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [all_product, setAllProduct] = useState([]);
-  const serverLink = "http://localhost:8001";
+  const serverLink = "https://glamfit.onrender.com";
   useEffect(() => {
     fetch(`${serverLink}/allProducts`)
       .then((res) => res.json())
