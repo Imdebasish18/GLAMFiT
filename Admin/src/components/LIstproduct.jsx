@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import cross_icon from "../assets/cross_icon.png";
-import ShopContex from "../../../FrontEnd/src/contex/ShopContex";
+// import { AdminContex } from "../contex/AdminContex";
 export default function Listproduct() {
   const [allproducts, setAllProducts] = useState([]);
-  // const { serverLink } = useContext(ShopContex);
-  const { serverLink } = useContext(ShopContex);
+  const serverLink = "https://glamfit.onrender.com";
+  // const serverLink = "http://localhost:8001";
 
   const fetchInfo = async () => {
     await fetch(`${serverLink}/allProducts`)

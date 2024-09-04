@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import upload_area from "../assets/upload_area.svg";
-import ShopContex from "../../../FrontEnd/src/contex/ShopContex";
 
 export default function Addproduct() {
   const [image, setImage] = useState(false);
@@ -11,7 +10,8 @@ export default function Addproduct() {
     old_price: "",
     new_price: "",
   });
-  const { serverLink } = useContext(ShopContex);
+  const serverLink = "https://glamfit.onrender.com";
+  // const serverLink = "http://localhost:8001";
 
   const onChangeHandler = (e) => {
     setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
